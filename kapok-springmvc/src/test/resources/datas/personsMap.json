@@ -1,0 +1,12 @@
+{
+  "person1": {
+    "name": "zhangsan",
+    "gender": "male",
+    "dateOfBirth": "2017-01-26 02:21:47"
+  },
+  "person2": {
+    "name": "li",
+    "gender": "female",
+    "dateOfBirth": "2017-01-27 01:42:17"
+  }
+}
