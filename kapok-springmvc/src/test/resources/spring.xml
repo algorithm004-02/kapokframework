@@ -6,4 +6,6 @@
 
     <bean id="jsonView" class="com.kapokframework.springmvc.views.json.JsonView"/>
 
+    <alias name="jsonView" alias="d"/>
+
 </beans>

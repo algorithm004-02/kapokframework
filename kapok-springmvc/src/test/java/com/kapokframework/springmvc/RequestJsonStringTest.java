@@ -144,6 +144,14 @@ public class RequestJsonStringTest {
         ).andExpect(status().isOk()).andDo(print());
     }
 
+    @Test
+    public void test() throws Exception {
+        String[] names = wac.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
+
     private String getData(String path) throws Exception {
         return FileUtils.readFileToString(ResourceUtils.getFile(path), Charset.defaultCharset());
     }
