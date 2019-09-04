@@ -12,7 +12,6 @@
     <modules>
         <module>gdgxwl-base</module>
         <module>kapok-account</module>
-        <module>kapok-springmvc</module>
     </modules>
 
 </project>
