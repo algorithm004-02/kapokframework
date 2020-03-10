@@ -1,13 +1,13 @@
-# IntelliJ IDEA
+### IntelliJ IDEA ###
+.idea/
 *.iml
 *.ipr
 *.iws
-.idea/
 
-# Eclipse
+### Eclipse ###
+.settings/
 .classpath
 .project
-.settings/
 
-# 编译目录
-*/target/
+### 编译目录 ###
+target/
