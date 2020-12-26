@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    schema: classpath:db/h2/schema.sql
+    data: classpath:db/h2/data.sql

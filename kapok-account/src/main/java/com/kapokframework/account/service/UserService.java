@@ -1,13 +1,9 @@
 package com.kapokframework.account.service;
 
-import com.kapokframework.account.model.QUser;
 import com.kapokframework.account.model.User;
 import com.kapokframework.account.repository.UserRepository;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.jpa.impl.JPAQuery;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.beanutils.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,16 +17,10 @@ import java.util.Optional;
  * @since 2019-08-13 14:12
  */
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
-    private JPAQueryFactory jpaQueryFactory;
-
-    @Autowired
-    public UserService(UserRepository userRepository, JPAQueryFactory jpaQueryFactory) {
-        this.userRepository = userRepository;
-        this.jpaQueryFactory = jpaQueryFactory;
-    }
+    private final UserRepository userRepository;
 
     /**
      * 创建
@@ -102,17 +92,17 @@ public class UserService {
     /**
      * 搜索
      *
-     * @param predicate
      * @return
      */
-    public List<User> search(Predicate predicate) {
-        QUser user = QUser.user;
-        JPAQuery<User> query = this.jpaQueryFactory.selectFrom(user);
-
-        if (predicate != null)
-            query.where(predicate);
-
-        return query.fetch();
+    public List<User> search() {
+//        QUser user = QUser.user;
+//        JPAQuery<User> query = this.jpaQueryFactory.selectFrom(user);
+//
+//        if (predicate != null)
+//            query.where(predicate);
+//
+//        return query.fetch();
+        return this.userRepository.findAll();
     }
 
 }
