@@ -1,4 +1,4 @@
-package com.kapokframework.account.model;
+package com.kapokframework.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,8 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 /**
- * @author Will WM. Zhang
- * @since 2019-08-13 14:03
+ * TODO
+ *
+ * @author <a href="mailto:samposn@163.com">Will WM. Zhang</a>
+ * Create At: 2019-08-13 14:03
+ * @since
  */
 @Entity
 @Table(name = "t_user")

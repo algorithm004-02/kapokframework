@@ -1,7 +1,9 @@
-package com.kapokframework.account.service;
+package com.kapokframework.account;
 
-import com.kapokframework.account.model.User;
-import com.kapokframework.account.repository.UserRepository;
+import com.kapokframework.account.model.QUser;
+import com.querydsl.core.types.Predicate;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -13,14 +15,18 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * @author Will WM. Zhang
- * @since 2019-08-13 14:12
+ * TODO
+ *
+ * @author <a href="mailto:samposn@163.com">Will WM. Zhang</a>
+ * Create At: 2019-08-13 14:12
+ * @since
  */
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final JPAQueryFactory jpaQueryFactory;
 
     /**
      * 创建
@@ -46,7 +52,7 @@ public class UserService {
     /**
      * 更新
      *
-     * @param id id
+     * @param id     id
      * @param values values
      * @return
      * @throws InvocationTargetException
@@ -54,10 +60,10 @@ public class UserService {
      */
     @Transactional
     public User update(Long id, Map<String, Object> values) throws InvocationTargetException, IllegalAccessException {
-        Optional<User> userOptional =  this.userRepository.findById(id);
+        Optional<User> userOptional = this.userRepository.findById(id);
         if (userOptional.isPresent()) {
             User oldUser = userOptional.get();
-            for (String key: values.keySet()) {
+            for (String key : values.keySet()) {
                 BeanUtils.setProperty(oldUser, key, values.get(key));
             }
             return oldUser;
@@ -94,15 +100,14 @@ public class UserService {
      *
      * @return
      */
-    public List<User> search() {
-//        QUser user = QUser.user;
-//        JPAQuery<User> query = this.jpaQueryFactory.selectFrom(user);
-//
-//        if (predicate != null)
-//            query.where(predicate);
-//
-//        return query.fetch();
-        return this.userRepository.findAll();
+    public List<User> search(Predicate predicate) {
+        QUser user = QUser.user;
+        JPAQuery<User> query = this.jpaQueryFactory.selectFrom(user);
+
+        if (predicate != null)
+            query.where(predicate);
+
+        return query.fetch();
     }
 
 }

@@ -1,7 +1,5 @@
 package com.kapokframework.account;
 
-import com.kapokframework.account.model.User;
-import com.kapokframework.account.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -65,7 +63,7 @@ public class AccountServiceTests {
 
     @Test
     public void testSearch() {
-        Assertions.assertNotNull(userService.search());
+        Assertions.assertNotNull(userService.search(null));
     }
 
 }
